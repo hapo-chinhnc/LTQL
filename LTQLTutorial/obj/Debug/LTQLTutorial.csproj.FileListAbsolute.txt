@@ -82,3 +82,5 @@ D:\Learn\LTQLTutorial\LTQLTutorial\obj\Debug\LTQLTutorial.dll
 D:\Learn\LTQLTutorial\LTQLTutorial\obj\Debug\LTQLTutorial.pdb
 D:\Learn\LTQLTutorial\LTQLTutorial\obj\Debug\LTQLTutorial.Migrations.TaoBang.resources
 D:\Learn\LTQLTutorial\LTQLTutorial\obj\Debug\LTQLTutorial.csproj.GenerateResource.cache
+D:\Learn\LTQLTutorial\LTQLTutorial\obj\Debug\LTQLTutorial.csprojAssemblyReference.cache
+D:\Learn\LTQLTutorial\LTQLTutorial\obj\Debug\LTQLTutorial.Migrations.update_HoaDon.resources

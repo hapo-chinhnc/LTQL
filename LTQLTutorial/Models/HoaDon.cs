@@ -12,7 +12,6 @@ namespace LTQLTutorial.Models
         public int id { get; set; }
         [Required, Range(0, 10000000)]
         public int tien { get; set; }
-        public int Id_KhachHang { get; set; }
         public virtual KhachHang KhachHang { get; set; }
     }
 }

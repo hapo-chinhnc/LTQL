@@ -16,10 +16,29 @@
                     @Html.ActionLink("Home", "Index", "Home")
                 </li>
                 <li class="nav-item mx-5">
-                    @Html.ActionLink("Trang Khách Hàng", "Index", "KhachHangs")
+                    @Html.ActionLink("Khách Hàng", "Index", "KhachHangs")
                 </li>
-            </ul>
+                <li class="nav-item mx-5">
+                    @Html.ActionLink("Hoá Đơn", "Index", "HoaDons")
+                </li>
+                @if (Session["idKhachHang"] == null)
+                {
+                    <li class="nav-item mx-5">
+                        @Html.ActionLink("Đăng Ký", "Register", "Home")
+                    </li>
+                    <li class="nav-item mx-5">
+                        @Html.ActionLink("Đăng Nhập", "Login", "Home")
+                    </li>
+                }
+                else
+                {
+                    <li class="nav-item mx-5 text-white">Xin chào: @Session["tenKH"]</li>
+                    <li class="nav-item mx-5">
+                        @Html.ActionLink("Đăng Xuất", "Logout", "Home")
+                    </li>
+                }
 
+            </ul>
         </nav>
     </div>
     <div class="container body-content">

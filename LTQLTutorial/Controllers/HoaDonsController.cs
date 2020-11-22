@@ -10,111 +10,114 @@ using LTQLTutorial.Models;
 
 namespace LTQLTutorial.Controllers
 {
-    public class KhachHangsController : Controller
+    public class HoaDonsController : Controller
     {
         private ConnectDB db = new ConnectDB();
 
-        // GET: KhachHangs
+        // GET: HoaDons
         public ActionResult Index()
         {
             if (Session["idKhachHang"] == null)
             {
                 return RedirectToAction("Login", "Home");
             }
-            return View(db.KhachHangs.ToList());
+            return View(db.HoaDons.ToList());
         }
 
-        // GET: KhachHangs/Details/5
+        // GET: HoaDons/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            KhachHang khachHang = db.KhachHangs.Find(id);
-            if (khachHang == null)
+            HoaDon hoaDon = db.HoaDons.Find(id);
+            if (hoaDon == null)
             {
                 return HttpNotFound();
             }
-            return View(khachHang);
+            return View(hoaDon);
         }
 
-        // GET: KhachHangs/Create
+        // GET: HoaDons/Create
         public ActionResult Create()
         {
+            var DSKhachHang = db.KhachHangs.ToList();
+            var selectList = new SelectList(DSKhachHang, "id", "name");
+            ViewData["KhachHang"] = selectList;
             return View();
         }
 
-        // POST: KhachHangs/Create
+        // POST: HoaDons/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,name,phone,address")] KhachHang khachHang)
+        public ActionResult Create([Bind(Include = "id,tien,KhachHang_id")] HoaDon hoaDon)
         {
             if (ModelState.IsValid)
             {
-                db.KhachHangs.Add(khachHang);
+                db.HoaDons.Add(hoaDon);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(khachHang);
+            return View(hoaDon);
         }
 
-        // GET: KhachHangs/Edit/5
+        // GET: HoaDons/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            KhachHang khachHang = db.KhachHangs.Find(id);
-            if (khachHang == null)
+            HoaDon hoaDon = db.HoaDons.Find(id);
+            if (hoaDon == null)
             {
                 return HttpNotFound();
             }
-            return View(khachHang);
+            return View(hoaDon);
         }
 
-        // POST: KhachHangs/Edit/5
+        // POST: HoaDons/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,name,phone,address")] KhachHang khachHang)
+        public ActionResult Edit([Bind(Include = "id,tien")] HoaDon hoaDon)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(khachHang).State = EntityState.Modified;
+                db.Entry(hoaDon).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(khachHang);
+            return View(hoaDon);
         }
 
-        // GET: KhachHangs/Delete/5
+        // GET: HoaDons/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            KhachHang khachHang = db.KhachHangs.Find(id);
-            if (khachHang == null)
+            HoaDon hoaDon = db.HoaDons.Find(id);
+            if (hoaDon == null)
             {
                 return HttpNotFound();
             }
-            return View(khachHang);
+            return View(hoaDon);
         }
 
-        // POST: KhachHangs/Delete/5
+        // POST: HoaDons/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            KhachHang khachHang = db.KhachHangs.Find(id);
-            db.KhachHangs.Remove(khachHang);
+            HoaDon hoaDon = db.HoaDons.Find(id);
+            db.HoaDons.Remove(hoaDon);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

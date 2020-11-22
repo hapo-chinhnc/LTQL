@@ -1,0 +1,41 @@
+﻿@model LTQLTutorial.Models.KhachHang
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Register</h2>
+<div class="container">
+    <div class="col-6">
+        <h1>Chỗ này để tạo form</h1>
+        @using (Html.BeginForm("Register", "Home", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div>
+                @Html.LabelFor(kh => kh.name, "Tên Khách Hàng: ")
+                @Html.TextBoxFor(kh => kh.name, new { @placeholder = "Tên" })
+            </div>
+            <div>
+                @Html.LabelFor(kh => kh.phone, "Số điện thoại")
+                @Html.TextBoxFor(kh => kh.phone, new { @placeholder = "Số điện thoại" })
+            </div>
+            <div>
+                @Html.LabelFor(kh => kh.address, "Địa Chỉ: ")
+                @Html.TextBoxFor(kh => kh.address, new { @placeholder = "Địa chỉ" })
+            </div>
+            <div>
+                @Html.LabelFor(kh => kh.email, "Email")
+                @Html.TextBoxFor(kh => kh.email, new { @placeholder = "Email" })
+            </div>
+            <div>
+                @Html.LabelFor(kh => kh.password, "Mật Khẩu")
+                @Html.TextBoxFor(kh => kh.password, new { @placeholder = "MK" })
+            </div>
+            <div>
+                @Html.LabelFor(kh => kh.confirm_password, "Xác nhận mật khẩu")
+                @Html.TextBoxFor(kh => kh.confirm_password, new { @placeholder = "Xác nhận MK" })
+            </div>
+            <input type="submit" value="Đăng Ký" />
+        }
+    </div>
+</div>
